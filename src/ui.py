@@ -107,7 +107,9 @@ def create_main_window():
                             callback=on_provider_change
                         )
                     
-                    with dpg.child_window(height=55, border=True, width=-1, show=False, tag="deepl_api_container"):
+                    with dpg.child_window(height=55, border=True, width=-1, 
+                                        show=(settings.translator_provider == "DeepL"),
+                                        tag="deepl_api_container"):
                         dpg.add_text("DeepL API Key", color=(200, 200, 200))
                         dpg.add_input_text(
                             width=-1,
@@ -185,3 +187,4 @@ def create_main_window():
 def cleanup():
     if clipboard_monitor:
         clipboard_monitor.stop()
+    settings.save_settings()  # Save settings on exit
