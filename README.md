@@ -23,6 +23,27 @@ A **simple clipboard translator** for Era games. Just copy text and get instant 
 
 Other Era game translators are too complex for my taste. I just wanted something dead simple and quick *(and probably shittier version)*. Plus, I needed an excuse to learn Python.
 
+## How To Use
+
+1. Get your **DeepL API Key** first:
+   - Sign up at [DeepL API Free](https://www.deepl.com/pro-api)
+   - Copy your Authentication Key
+
+2. Run the compiled version:
+   - Download the latest release
+   - Run `EraClip.exe`
+   - Paste your DeepL API Key in Settings tab
+   - Enable Copy to Clipboard in your Era game
+   - Start translator.
+
+3. Run from source:
+   ```bash
+   git clone https://github.com/0zl/era-clip
+   cd era-clip
+   pip install -r requirements.txt
+   python main.py
+   ```
+
 ## Why this is detected as a Virus?!
 
 **TL;DR.** False-Positive.
@@ -36,6 +57,7 @@ Windows Defender and friends might get mad and become *Tsundere* to this tool. H
 If you're paranoid:
 1. Check the source code (it's all here!)
 2. Build it yourself
-3. Or just use something else.
+3. Run via Python instead of using compiled binary
+4. Or just use something else.
 
 I don't know how to workaround this, it's open source, feels free to improve the software.
