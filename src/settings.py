@@ -1,5 +1,6 @@
 import json
 import os
+import sys
 from pathlib import Path
 
 class Settings:
@@ -29,7 +30,7 @@ class Settings:
         self.translator_api_key = None
 
     def _get_settings_path(self):
-        return Path(os.path.dirname(__file__)).parent / self.SETTINGS_FILE
+        return Path(os.path.join(os.path.dirname(sys.argv[0]), self.SETTINGS_FILE))
 
     def to_dict(self):
         return {
