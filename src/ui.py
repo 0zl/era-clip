@@ -110,7 +110,7 @@ def create_main_window():
                             tag="transparency_slider"
                         )
                     
-                    with dpg.child_window(height=125, border=True, width=-1):
+                    with dpg.child_window(height=150, border=True, width=-1):
                         dpg.add_text("Parser Settings", color=(200, 200, 200))
                         dpg.add_checkbox(label="Japanese", default_value=True, tag="japanese_parser")
                         dpg.add_checkbox(label="Chinese", default_value=True, tag="chinese_parser")
@@ -121,6 +121,13 @@ def create_main_window():
                             min_value=0.1,
                             max_value=1.0,
                             tag="confidence_parser"
+                        )
+                        dpg.add_slider_int(
+                            label="Max Characters",
+                            default_value=350,
+                            min_value=0,
+                            max_value=1000,
+                            tag="max_chars_parser"
                         )
 
             with dpg.tab(label="About"):
