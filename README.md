@@ -15,6 +15,6 @@ Translator tool for (mainly) Era games. No more pain playing reading moonrunes w
 
 Built with love for /hgg/ and /egg/. Feel free to contribute or whatever.
 
-### Why?
+## Why?
 
 Existing translator tools for Era games are just too much for my taste. I wanted something dead simple and quick (possibly shitter version than other tools). Plus, I needed an excuse to learn Python.
