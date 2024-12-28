@@ -31,8 +31,9 @@ jobs:
         nuitka-version: main
         script-name: main.py
         mode: onefile
-        out-file: EraClip
+        output-file: EraClip
         windows-console-mode: disable
+        assume-yes-for-downloads: true
 
     - name: Upload Release Asset
       uses: softprops/action-gh-release@v1
