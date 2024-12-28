@@ -63,8 +63,37 @@ class LanguageDetector:
             'zh': LanguageRanges.CHINESE_EXCLUSIVE,
         }
     
+    def clean_repeated_chars(self, text: str, max_repeats: int = 2) -> str:
+        if not text:
+            return text
+            
+        # Common divider characters
+        divider_chars = {'-', '=', '_', '~', '•', '−', '─', '━', '।', '᱾', '⸻', '—'}
+        
+        result = []
+        prev_char = ''
+        repeat_count = 0
+        
+        for char in text:
+            if char == prev_char:
+                repeat_count += 1
+                # For divider characters, only keep one instance
+                if char in divider_chars:
+                    continue
+                # For other characters, keep up to max_repeats
+                if repeat_count >= max_repeats:
+                    continue
+            else:
+                repeat_count = 0
+            
+            result.append(char)
+            prev_char = char
+            
+        return ''.join(result)
+
     def clean_text(self, text: str) -> str:
         text = unicodedata.normalize('NFKC', text)
+        text = self.clean_repeated_chars(text)
         text = re.sub(r'\s+', ' ', text).strip()
         return text
     

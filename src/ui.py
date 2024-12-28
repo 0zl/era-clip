@@ -16,7 +16,7 @@ def on_clipboard_change(content: str):
     
     lang_score = language_detector.detect_multiple_languages(content)
     lang_id, highest_score = max(lang_score.items(), key=lambda x: x[1])
-    print(f"Detected language: {lang_id} with confidence: {highest_score}")
+    print(f"Detected language: {lang_id} with confidence: {highest_score} | {content}")
 
     confidence_threshold = settings.confidence_threshold * 100
     if highest_score < confidence_threshold or len(content) > settings.max_characters:

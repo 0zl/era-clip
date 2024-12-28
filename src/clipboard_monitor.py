@@ -84,6 +84,7 @@ class ClipboardMonitor:
     
     def wnd_proc(self, hwnd, msg, wparam, lparam):
         if msg == win32con.WM_DRAWCLIPBOARD:
+            time.sleep(0.2) # Delay to let the clipboard data be ready
             self.on_clipboard_change()
             if self.next_clipboard_viewer:
                 win32gui.SendMessage(self.next_clipboard_viewer, msg, wparam, lparam)
