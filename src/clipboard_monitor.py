@@ -105,4 +105,4 @@ class ClipboardMonitor:
                     self.callback(data)
             win32clipboard.CloseClipboard()
         except Exception as e:
-            print(f"Error accessing clipboard: {e}")
+            raise e

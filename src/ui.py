@@ -10,10 +10,19 @@ clipboard_monitor = None
 settings = Settings()
 
 def on_clipboard_change(content: str):
+    if settings.first_toggle:
+        settings.first_toggle = False
+        return
+    
     lang_score = language_detector.detect_multiple_languages(content)
     lang_id, highest_score = max(lang_score.items(), key=lambda x: x[1])
     print(f"Detected language: {lang_id} with confidence: {highest_score}")
 
+    confidence_threshold = settings.confidence_threshold * 100
+    if highest_score < confidence_threshold or len(content) > settings.max_characters:
+        return
+
+    dpg.set_value("translation_output", f'[translating...]\n{content}')
     translated_text = translator.translate(content)
     dpg.set_value("translation_output", translated_text)
 
@@ -41,6 +50,7 @@ def toggle_translator(sender, value):
         clipboard_monitor.start()
         dpg.configure_item("toggle_button", label="Stop Translator")
         dpg.bind_item_theme("toggle_button", "running_theme")
+        settings.first_toggle = True
 
 def create_button_themes():
     # Theme for running state
@@ -69,11 +79,21 @@ def on_parser_setting_change(sender, value):
     elif sender == "max_chars_parser":
         settings.update_parser_settings(max_chars=value)
 
+def register_fonts():
+    with dpg.font_registry():
+        with dpg.font("C:/Windows/Fonts/msgothic.ttc", 14, tag="default_font") as default_font:
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Japanese)
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Chinese_Full)
+            dpg.add_font_range_hint(dpg.mvFontRangeHint_Korean)
+        return default_font
+
 def create_main_window():
     global clipboard_monitor
     global language_detector
     
     create_button_themes()
+    default_font = register_fonts()
+    settings.first_toggle = True
     clipboard_monitor = ClipboardMonitor(on_clipboard_change)
     language_detector = LanguageDetector()
 
@@ -87,6 +107,7 @@ def create_main_window():
                             wrap=0,
                             tag="translation_output"
                         )
+                        dpg.bind_item_font("translation_output", "default_font")
                     with dpg.child_window(border=False, width=-1, height=-1):
                         dpg.add_button(
                             label="Start Translator",
@@ -100,7 +121,7 @@ def create_main_window():
                     with dpg.child_window(height=55, border=True, width=-1):
                         dpg.add_text("Provider", color=(200, 200, 200))
                         dpg.add_radio_button(
-                            items=["Google Translate", "DeepL"],
+                            items=["DeepL"],
                             default_value=settings.translator_provider,
                             horizontal=True,
                             tag="provider_radio",
@@ -108,12 +129,12 @@ def create_main_window():
                         )
                     
                     with dpg.child_window(height=55, border=True, width=-1, 
-                                        show=(settings.translator_provider == "DeepL"),
+                                        show=True,
                                         tag="deepl_api_container"):
                         dpg.add_text("DeepL API Key", color=(200, 200, 200))
                         dpg.add_input_text(
                             width=-1,
-                            password=True,
+                            password=False,
                             tag="deepl_api_key",
                             default_value=settings.translator_api_key or "",
                             callback=on_api_key_change

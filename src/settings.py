@@ -14,6 +14,9 @@ class Settings:
         return cls._instance
 
     def _init_defaults(self):
+        # Variable singleton 
+        self.first_toggle = True
+
         # Parser settings
         self.japanese_enabled = True
         self.chinese_enabled = True
@@ -22,7 +25,7 @@ class Settings:
         self.max_characters = 350
         
         # Translator settings
-        self.translator_provider = "Google Translate"
+        self.translator_provider = "DeepL"
         self.translator_api_key = None
 
     def _get_settings_path(self):
