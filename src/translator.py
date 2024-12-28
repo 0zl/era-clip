@@ -1,14 +1,15 @@
+from .settings import Settings
+
 class Translator:
     def __init__(self):
-        self.provider = "Google Translate"
-        self.api_key = None
+        self.settings = Settings()
 
     def set_provider(self, provider: str):
-        self.provider = provider
+        self.settings.update_translator_settings(provider=provider)
 
     def set_api_key(self, key: str):
-        self.api_key = key
+        self.settings.update_translator_settings(api_key=key)
 
     def translate(self, text: str) -> str:
         # Mock translation for now
-        return f"[{self.provider}] {text}"
+        return f"[{self.settings.translator_provider}] {text}"
