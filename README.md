@@ -22,3 +22,20 @@ A **simple clipboard translator** for Era games. Just copy text and get instant 
 ## Why Though?
 
 Other Era game translators are too complex for my taste. I just wanted something dead simple and quick *(and probably shittier version)*. Plus, I needed an excuse to learn Python.
+
+## Why this is detected as a Virus?!
+
+**TL;DR.** False-Positive.
+
+Windows Defender and friends might get mad and become *Tsundere* to this tool. Here's why:
+- It uses goofy Windows API calls to monitor your clipboard
+- It create *ghost window* runs in the background like a sus program to capture clipboard event
+- It's compiled with Nuitka. *(PyInstaller alternative)*
+- It reads/writes files on your system for config and caching translations
+
+If you're paranoid:
+1. Check the source code (it's all here!)
+2. Build it yourself
+3. Or just use something else.
+
+I don't know how to workaround this, it's open source, feels free to improve the software.
