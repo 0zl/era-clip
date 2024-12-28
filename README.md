@@ -1,6 +1,9 @@
 # EraClip
 
-<img align="right" src="images/0.png" width="200" style="margin: 0 0 10px 20px;">
+<div style="float: right; margin: 0 0 10px 20px;">
+  <img src="images/0.png" width="200" style="margin-right: 10px;">
+  <img src="images/1.png" width="200">
+</div>
 
 Translator tool for *(mainly)* Era games. No more pain playing reading moonrunes while dating with Reimu - automatically copy text from the clipboard and get instant English translations via DeepL.
 
