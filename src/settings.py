@@ -21,8 +21,8 @@ class Settings:
         self.japanese_enabled = True
         self.chinese_enabled = True
         self.korean_enabled = True
-        self.confidence_threshold = 0.85
-        self.max_characters = 350
+        self.confidence_threshold = 0.48
+        self.max_characters = 450
         
         # Translator settings
         self.translator_provider = "DeepL"
