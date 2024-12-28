@@ -172,3 +172,4 @@ cython_debug/
 
 test.py
 eraclip.json
+main.*/
