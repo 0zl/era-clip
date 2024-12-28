@@ -1,6 +1,6 @@
 # EraClip
 
-<div align="right">
+<div style="float: right; margin-left: 20px;">
   <img src="images/0.png" width="250" alt="EraClip Main Window">
   <img src="images/1.png" width="250" alt="EraClip Settings">
 </div>
