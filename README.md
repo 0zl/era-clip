@@ -2,24 +2,24 @@
 
 <img align="right" src="images/0.png" width="200" style="margin: 0 0 20px 20px;">
 
-Translator tool for *(mainly)* Era games. No more pain playing reading moonrunes while dating with Reimu - automatically copy text from the clipboard and get instant English translations via DeepL.
+A **simple clipboard translator** for Era games. Just copy text and get instant English translations via DeepL - *no more suffering through moonrunes while dating Reimu!*
 
-## Download
-https://github.com/0zl/era-clip/releases/latest/download/EraClip.exe
+## Quick Start
+**[Download Latest Release](https://github.com/0zl/era-clip/releases/latest/download/EraClip.exe)**
 
 ## Features
 
-- Comfy real-time clipboard translation
-- Based language detection for JP/CN/KR text
-- Actually good translations using DeepL *(opinionated)*
-- Smart caching so you don't spam API calls
-- Transparency + always-on-top for maximum comf
-- Works with all your favorite Era games **(Copy to Clipboard must be enabled!)**
-- Doesn't butcher moonrunes in the UI
-- Bugs. More Bugs.
+- Real-time clipboard monitoring & translation
+- Language detection (JP/CN/KR)
+- High-quality DeepL translations
+- Smart caching to reduce API calls
+- Always-on-top with transparency options
+- Clean UI that doesn't butcher CJK text
+- Works with all Era games *(just enable Copy to Clipboard!)*
+- Bugs. More bugs.
 
-Built with love for /hgg/ and /egg/. Feel free to contribute or whatever.
+*Built with love for `/hgg/` and `/egg/`. Feel free to contribute or whatever.*
 
-## Why?
+## Why Though?
 
-Existing translator tools for Era games are just too much for my taste. I wanted something dead simple and quick *(possibly shitter version than other tools)*. Plus, I needed an excuse to learn Python.
+Other Era game translators are too complex for my taste. I just wanted something dead simple and quick *(and probably shittier version)*. Plus, I needed an excuse to learn Python.
