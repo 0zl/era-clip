@@ -4,7 +4,6 @@
 
 A **simple clipboard translator** for Era games. Just copy text and get instant English translations via DeepL - *no more suffering through moonrunes while dating Reimu!*
 
-### Quick Start
 **[Download Latest Release](https://github.com/0zl/era-clip/releases/latest/download/EraClip.exe)**
 
 ## Features
