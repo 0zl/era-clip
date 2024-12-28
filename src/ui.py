@@ -58,17 +58,20 @@ def create_main_window():
     with dpg.window(label="Main Window", tag="main"):
         with dpg.tab_bar(tag="tab_bar", reorderable=False):
             with dpg.tab(label="Translator"):
-                dpg.add_button(
-                    label="Start Translator",
-                    callback=toggle_translator,
-                    tag="toggle_button"
-                )
-                with dpg.child_window(border=True, width=-1, height=-1):
-                    dpg.add_text(
-                        default_value="Translation results will appear here...",
-                        wrap=0,
-                        tag="translation_output"
-                    )
+                with dpg.group():
+                    with dpg.child_window(border=True, width=-1, height=-25):
+                        dpg.add_text(
+                            default_value="Translation results will appear here...",
+                            wrap=0,
+                            tag="translation_output"
+                        )
+                    with dpg.child_window(border=False, width=-1, height=-1):
+                        dpg.add_button(
+                            label="Start Translator",
+                            callback=toggle_translator,
+                            tag="toggle_button",
+                            width=-1
+                        )
                 
             with dpg.tab(label="Settings"):
                 with dpg.group():
@@ -110,16 +113,8 @@ def create_main_window():
                     with dpg.child_window(height=125, border=True, width=-1):
                         dpg.add_text("Parser Settings", color=(200, 200, 200))
                         dpg.add_checkbox(label="Japanese", default_value=True, tag="japanese_parser")
-                        with dpg.group(horizontal=True):
-                            dpg.add_checkbox(label="Korean", enabled=False, tag="korean_parser")
-                            dpg.add_text("(?)", tag="korean_tooltip")
-                            with dpg.tooltip("korean_tooltip"):
-                                dpg.add_text("Unimplemented")
-                        with dpg.group(horizontal=True):
-                            dpg.add_checkbox(label="Chinese", enabled=False, tag="chinese_parser")
-                            dpg.add_text("(?)", tag="chinese_tooltip")
-                            with dpg.tooltip("chinese_tooltip"):
-                                dpg.add_text("Unimplemented")
+                        dpg.add_checkbox(label="Chinese", default_value=True, tag="chinese_parser")
+                        dpg.add_checkbox(label="Korean", default_value=True, tag="korean_parser")
                         dpg.add_slider_float(
                             label="Confidence Parser",
                             default_value=0.85,
@@ -127,6 +122,16 @@ def create_main_window():
                             max_value=1.0,
                             tag="confidence_parser"
                         )
+
+            with dpg.tab(label="About"):
+                with dpg.group(horizontal=True):
+                    with dpg.group():
+                        dpg.add_text("EraClip", color=(200, 200, 200))
+                        dpg.add_text("A real-time translator for playing untranslated Era games.")
+                        dpg.add_spacer(height=5)
+                        dpg.add_text("Thanks: /hgg, /egg")
+                        dpg.add_spacer(height=5)
+                        dpg.add_text("https://github.com/0zl/era-clip")
 
     dpg.bind_item_theme("toggle_button", "stopped_theme")
 
